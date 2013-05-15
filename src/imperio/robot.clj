@@ -37,8 +37,13 @@
 (def left-click!
   (partial click! InputEvent/BUTTON1_MASK))
 
-(def right-click!
-  (partial click! InputEvent/BUTTON2_MASK))
+(def os-right-click-mapping
+  {"Mac OS X" InputEvent/BUTTON3_MASK})
+
+(defn right-click! []
+  (let [os   (System/getProperty "os.name")
+        mask (get os-right-click-mapping os InputEvent/BUTTON2_MASK)]
+    (click! mask)))
 
 (defn double-click
   [clickfn]
