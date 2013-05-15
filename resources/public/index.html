@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script>
+      var ws = new WebSocket("ws://localhost:1410");
+
+      ws.onopen = function()
+      {
+        // Web Socket is connected, send data using send()
+        console.log("Socket opened!");
+      };
+
+      ws.onclose = function()
+      { 
+        // websocket is closed.
+        console.log("Socket closed!");
+      };
+
+      function send(msg) {
+        ws.send(msg);
+      }
+
+      function command(cmd, args) {
+        send(JSON.stringify({
+          'command': cmd,
+          'args' : args,
+        }));
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
