@@ -11,7 +11,7 @@
 (defn execute!
   [{command :command
     args    :args}]
-  (println "Executing" command "with args" args)
+  ;(println "Executing" command "with args" args)
   (apply
     (protocol (keyword command))
     args))

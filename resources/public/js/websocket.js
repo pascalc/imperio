@@ -20,6 +20,7 @@ send = function(msg) {
 }
 
 command = function(cmd, args) {
+  console.log("command", cmd, args);
   send(JSON.stringify({
     'command': cmd,
     'args' : args,

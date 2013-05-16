@@ -19,7 +19,7 @@
     (println ch "connected")
     (on-receive ch
                 (fn [data]
-                  (println data)
+                  ;(println data)
                   (imperio/execute! (parse data))))
     (on-close ch
               (fn [status]

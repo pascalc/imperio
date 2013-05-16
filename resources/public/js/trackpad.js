@@ -2,11 +2,12 @@ var canvas = document.getElementById("canvas");
 
 var lastX, lastY;
 var move = false;
+var fingers = 0;
 
 canvas.addEventListener('touchstart', function(event) {
-  console.log('touchstart', event);
   lastX = event.targetTouches[0].pageX;
   lastY = event.targetTouches[0].pageY;
+  fingers = event.targetTouches.length;
 });
 
 canvas.addEventListener('touchmove', function(event) {
@@ -16,21 +17,28 @@ canvas.addEventListener('touchmove', function(event) {
   var curX = event.targetTouches[0].pageX;
   var curY = event.targetTouches[0].pageY;
 
-  var dX = (curX - lastX) * 2;
-  var dY = (curY - lastY) * 2;
-  command("move_mouse", [dX, dY]);
-
+  if (fingers == 1) {
+    var mX = (curX - lastX) * 2;
+    var mY = (curY - lastY) * 2;
+    command("move_mouse", [mX, mY]);
+  } else if (fingers == 2) {
+    var scrollY = (curY - lastY) * 0.5;
+    command("scroll", [scrollY]);
+  }
+  
   lastX = curX;
   lastY = curY;
+  fingers = event.targetTouches.length;
 });
 
 canvas.addEventListener('touchend', function(event) {
-  console.log('touchend', event);
-  if (move) {
-    console.log("You dragged!");
-  } else {
-     console.log("You clicked!");
-     command("left_click", []);
+  if (!move) {
+    if (fingers == 1) {
+      command("left_click", []);  
+    } else if (fingers == 2) {
+      command("right_click", []);
+    }
   }
+  fingers = 0;
   move = false;
 });
