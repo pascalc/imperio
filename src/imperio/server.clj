@@ -20,7 +20,10 @@
     (on-receive ch
                 (fn [data]
                   (println data)
-                  (imperio/execute! (parse data))))))
+                  (imperio/execute! (parse data))))
+    (on-close ch
+              (fn [status]
+                (println ch "closed" status)))))
 
 ;; Routes
 
@@ -38,7 +41,7 @@
 
 (defn start-server! []
   (reset! server
-          (run-server (site #'routes) {:port 1410})))
+          (run-server (site #'routes) {:port 4000})))
 
 (defn stop-server! []
   (@server))
