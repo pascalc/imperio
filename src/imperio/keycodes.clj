@@ -1,6 +1,13 @@
 (ns imperio.keycodes
   (:import [java.awt.event KeyEvent]))
 
+(def special-keys
+  {:backspace KeyEvent/VK_BACK_SPACE
+   :up        KeyEvent/VK_UP
+   :right     KeyEvent/VK_RIGHT
+   :down      KeyEvent/VK_DOWN
+   :left      KeyEvent/VK_LEFT})
+
 (def string->keycodes
   {
    "a" [KeyEvent/VK_A]

@@ -1,5 +1,5 @@
 (ns imperio.robot
-  (:use [imperio.keycodes :only [string->keycodes]])
+  (:use [imperio.keycodes :only [special-keys string->keycodes]])
   (:import [java.awt Robot MouseInfo]
            [java.awt.event InputEvent KeyEvent]))
 
@@ -75,3 +75,8 @@
   (let [tokens   (tokenize s)
         keycodes (flatten (map string->keycodes tokens))]
     (type! keycodes)))
+
+(defn press-key!
+  "Press the given special key"
+  [k]
+  (type! [(special-keys (keyword k))]))

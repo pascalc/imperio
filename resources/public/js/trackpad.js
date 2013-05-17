@@ -1,16 +1,16 @@
-var canvas = document.getElementById("canvas");
+var trackpad = document.getElementById("trackpad");
 
 var lastX, lastY;
 var move = false;
 var fingers = 0;
 
-canvas.addEventListener('touchstart', function(event) {
+trackpad.addEventListener('touchstart', function(event) {
   lastX = event.targetTouches[0].pageX;
   lastY = event.targetTouches[0].pageY;
   fingers = event.targetTouches.length;
 });
 
-canvas.addEventListener('touchmove', function(event) {
+trackpad.addEventListener('touchmove', function(event) {
   event.preventDefault();
   move = true;
 
@@ -31,7 +31,7 @@ canvas.addEventListener('touchmove', function(event) {
   fingers = event.targetTouches.length;
 });
 
-canvas.addEventListener('touchend', function(event) {
+trackpad.addEventListener('touchend', function(event) {
   if (!move) {
     if (fingers == 1) {
       command("left_click", []);  

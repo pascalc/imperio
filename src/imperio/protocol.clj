@@ -6,7 +6,8 @@
    :right_click robot/right-click!
    :left_click  robot/left-click!
    :scroll      robot/scroll!
-   :type        robot/type-string!})
+   :type        robot/type-string!
+   :key         robot/press-key!})
 
 (defn execute!
   [{command :command
