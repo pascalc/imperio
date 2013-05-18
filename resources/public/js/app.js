@@ -17,10 +17,9 @@ $(document).ready(function() {
 
   $("a.keyboard").click(function(e) {
     e.preventDefault();
-    $("#keyboard").fadeIn(FADE_TIME);
+    $("#keyboard-inputs").fadeIn(FADE_TIME);
     $("#trackpad").fadeOut(FADE_TIME);
-    $("#keyboard").focus();
   });
 
-  $("#keyboard").hide();
+  $("#keyboard-inputs").hide();
 });

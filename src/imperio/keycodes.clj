@@ -6,7 +6,8 @@
    :up        KeyEvent/VK_UP
    :right     KeyEvent/VK_RIGHT
    :down      KeyEvent/VK_DOWN
-   :left      KeyEvent/VK_LEFT})
+   :left      KeyEvent/VK_LEFT
+   :enter     KeyEvent/VK_ENTER})
 
 (def string->keycodes
   {

@@ -74,6 +74,51 @@ h1 {
   margin-left: -125px;
 }
 
+#special-keys {
+  position: relative;
+  display: block;
+  top: 145px;
+  width: 285px;
+  margin-left: -142.5px;
+  margin: auto;
+}
+
+.key {
+  position: absolute;
+}
+
+#backspace-key {
+  right: 10px;
+}
+
+#enter-key {
+  top: 70px;
+  right: 0px;
+  height: 128px;
+}
+
+.arrow-key {
+  width: 64px;
+}
+
+#up-key {
+  left: 30px;
+}
+
+#right-key {
+  top: 55px;
+  left: 65px; 
+}
+
+#left-key {
+  top: 55px;
+}
+
+#down-key {
+ top: 110px; 
+ left: 30px;
+}
+
 /* Smartphones (landscape) ----------- */
 @media only screen 
 and (min-width : 500px) {
@@ -86,6 +131,14 @@ and (min-width : 500px) {
   }
 
   #nav { 
+    display: none;
+  }
+}
+
+@media only screen 
+and (max-height : 300px) {
+  /* Styles */
+  #special-keys {
     display: none;
   }
 }
