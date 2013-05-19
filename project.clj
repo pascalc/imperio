@@ -1,5 +1,5 @@
-(defproject imperio "0.1.0-SNAPSHOT"
-  :description "Control your computer from your mobile phone over Wi-Fi"
+(defproject imperio "0.8.0"
+  :description "Control your computer with your smartphone, without the hassle"
   :url "http://imper.io"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
