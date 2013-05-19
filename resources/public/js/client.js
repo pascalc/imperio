@@ -11,15 +11,16 @@ $(document).ready(function() {
 
   $("a.trackpad").click(function(e) {
     e.preventDefault();
-    $("#keyboard").fadeOut(FADE_TIME);
-    $("#trackpad").fadeIn(FADE_TIME);
+    $("#keyboard-inputs").hide();
+    $("#trackpad").show();
   });
 
   $("a.keyboard").click(function(e) {
     e.preventDefault();
-    $("#keyboard-inputs").fadeIn(FADE_TIME);
-    $("#trackpad").fadeOut(FADE_TIME);
+    $("#keyboard-inputs").show();
+    $("#trackpad").hide();
   });
 
   $("#keyboard-inputs").hide();
 });
+

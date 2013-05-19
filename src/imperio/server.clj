@@ -2,15 +2,18 @@
   (:use [org.httpkit.server]
         [compojure.handler :only [site]]
         [compojure.core :only [defroutes GET]])
-  (:require [compojure.route :as route]
+  (:require [clojure.walk :as walk]
+            [clojure.java.io :as io]
+            [compojure.route :as route]
             [ring.util.response :as resp]
             [cheshire.core :as json]
-            [imperio.protocol :as imperio]))
+            [imperio.protocol :as imperio]
+            [imperio.ip :as ip]))
 
 (defn parse [s]
   (-> s
       json/parse-string
-      clojure.walk/keywordize-keys))
+      walk/keywordize-keys))
 
 ;; Handlers
 
@@ -27,21 +30,32 @@
 
 ;; Routes
 
+(declare port)
+
 (defroutes routes
   (GET "/" []
-       (resp/file-response "index.html" {:root "resources/public"}))
+       {:headers {"Content-Type" "text/html"}
+        :status  200
+        :body    (slurp (io/resource "public/index.html"))})
   (GET "/socket" [:as request]
        (ws-handler request))
+  (GET "/info" []
+       {:headers {"Content-Type" "application/json"}
+        :status  200
+        :body    (json/generate-string
+                  {:ip   (ip/first-ip-address)
+                   :port @port})})
   (route/resources "/"))
-
 
 ;; Server
 
 (defonce server (atom nil))
+(defonce port (atom nil))
 
-(defn start-server! []
+(defn start-server! [port]
+  (reset! imperio.server/port port)
   (reset! server
-          (run-server (site #'routes) {:port 4000})))
+          (run-server (site #'routes) {:port port})))
 
 (defn stop-server! []
   (@server))

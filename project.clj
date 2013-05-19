@@ -6,4 +6,5 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [http-kit "2.1.1"]
                  [compojure "1.1.5"]
-                 [cheshire "5.1.1"]])
+                 [cheshire "5.1.1"]]
+  :main imperio.main)

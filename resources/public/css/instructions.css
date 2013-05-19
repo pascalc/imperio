@@ -1,0 +1,39 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:200);
+
+body {
+  background-image: url("../img/twinkle_twinkle.png");
+  color: white;
+  font-family: Georgia;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+h1 {
+  /*font-family: 'Lobster', cursive;*/
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 24px;
+}
+
+#instructions {
+  margin-top: 30px;
+  color: black;
+  font-size: 20px;
+  padding-bottom: 30px;
+}
+
+#instructions .client-url {
+  display: block;
+  font-size: 30px; 
+  font-family: monospace;
+  text-align: center;
+  margin-top: 30px;
+}
